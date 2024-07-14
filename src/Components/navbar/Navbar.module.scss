@@ -1,0 +1,20 @@
+.navbar li {
+  list-style-type: none;
+}
+
+.container {
+  background-color: rgba(10, 10, 10, 0.87);
+  padding: 20px;
+}
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  .links {
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-decoration: none;
+    color: rgba(10, 10, 10, 0.87);
+  }
+}
