@@ -16,6 +16,8 @@ const Characters = () => {
   const searchParams = useSearchParams();
   const queryPage: any = searchParams.get("page");
 
+  // const pageNumber = queryPage ? parseInt(queryPage) : 1;
+  // let test = pageNumber;
   const getCharacters = async () => {
     try {
       const response = await fetch(`https://rickandmortyapi.com/api/character/?page=${queryPage}`);
@@ -26,6 +28,7 @@ const Characters = () => {
       const result = (await response.json()) as ApiResponse;
       setData(result.results);
       setTotalPages(result.info.pages);
+      // test = queryPage;
     } catch (error) {
       console.log("Error:", error);
     }
@@ -71,6 +74,7 @@ const Characters = () => {
                   <div className={styles.card_back}>
                     <h1>{character.name}</h1>
                     <Link className={styles.more_btn} href={`/characters/${character.id}`}>
+                      {/* <Link className={styles.more_btn} href={`/characters/${test}/${character.id}`}> */}
                       Details
                     </Link>
                   </div>
