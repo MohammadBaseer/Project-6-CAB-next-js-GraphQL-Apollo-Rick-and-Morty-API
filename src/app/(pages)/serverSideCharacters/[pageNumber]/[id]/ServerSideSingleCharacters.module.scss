@@ -1,0 +1,37 @@
+.box_container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  gap: 50px;
+  // border: solid;
+  height: 420px !important;
+
+  .title_box {
+    border-left: solid;
+    padding-left: 30px;
+    .title {
+      padding-bottom: 20px;
+    }
+  }
+  .image_box {
+    .image {
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+  }
+}
+
+.paging {
+  width: 20%;
+  padding: 20px;
+  margin: auto;
+}
+.paging > div {
+  display: flex;
+  justify-content: space-around;
+}
+.paging_btn {
+  padding: 10px;
+  font-size: 1rem;
+}

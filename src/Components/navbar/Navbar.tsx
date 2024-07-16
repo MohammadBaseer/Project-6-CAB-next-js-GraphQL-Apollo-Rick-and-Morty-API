@@ -15,8 +15,13 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link className={styles.links} href="/characters">
-            Characters
+          <Link className={styles.links} href="/clientSideCharacter?page=1">
+            Client Side Characters
+          </Link>
+        </li>
+        <li>
+          <Link className={styles.links} href="/serverSideCharacters/1">
+            Server Side Characters
           </Link>
         </li>
       </ul>

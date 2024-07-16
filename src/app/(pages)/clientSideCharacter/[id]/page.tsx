@@ -3,10 +3,9 @@ import { Character } from "@/app/models/custom-types";
 import Image from "next/image";
 import React, { MouseEvent, useEffect, useState } from "react";
 import styles from "./SignalCharacter.module.scss";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Spinner from "@/Components/Spinner/Loading";
 import Link from "next/link";
-import Loader from "@/app/loading";
 type SingleCharType = {
   params: {
     id: string;
@@ -74,7 +73,7 @@ const SingleCharacter = ({ params: { id } }: SingleCharType) => {
           <Spinner />
         ) : (
           <div className={styles.image_box}>
-            <Image className={styles.image} src={data.image} alt={data.name} width={300} height={300} />
+            <Image className={styles.image} src={data.image} alt={data.name} width={300} height={300} priority />
           </div>
         )}
         {!data ? (
