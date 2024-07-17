@@ -24,6 +24,11 @@ const Navbar = () => {
             Server Side Characters
           </Link>
         </li>
+        <li>
+          <Link className={styles.links} href="/episodes">
+            Episodes
+          </Link>
+        </li>
       </ul>
     </nav>
   );

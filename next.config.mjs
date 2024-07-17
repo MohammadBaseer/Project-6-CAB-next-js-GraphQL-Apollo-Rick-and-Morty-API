@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: "rickandmortyapi.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "m.media-amazon.com",
+        port: "",
+      },
     ],
   },
 };

@@ -1,0 +1,24 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 3rem;
+}
+.data_table {
+  width: 97%;
+  .table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+    .th {
+      border: 1px solid black;
+      text-align: left;
+      padding: 5px;
+    }
+    .td {
+      border: 1px solid black;
+      padding: 5px 10px;
+    }
+  }
+}
