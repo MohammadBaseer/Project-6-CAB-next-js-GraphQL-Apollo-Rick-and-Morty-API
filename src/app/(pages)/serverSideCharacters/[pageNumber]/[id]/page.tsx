@@ -8,16 +8,15 @@ import { useRouter } from "next/navigation";
 type SingleCharType = {
   params: {
     id: string;
+    pageNumber: string;
   };
 };
-const SingleCharacter = ({ params: { id } }: SingleCharType) => {
-  console.log("ID:::", id);
-
+const SingleCharacter = ({ params: { id, pageNumber } }: SingleCharType) => {
   const [data, setData] = useState<Character | null>(null);
   const [totalPages, setTotalPages] = useState<number | string>(826);
 
   const [pages, setPages] = useState<number | string>(id);
-  const pageNumber = Number(pages);
+  const pageNumberNum = Number(pages);
   //! useRouter() used for URL Query Parameter
   const router = useRouter();
 
@@ -37,19 +36,18 @@ const SingleCharacter = ({ params: { id } }: SingleCharType) => {
 
   //!==============
   const next = () => {
-    if (pageNumber !== totalPages) {
-      setPages(pageNumber + 1);
-      //! Push the pageNumber into URL as parameter in every next
-      router.push(`${pageNumber + 1}`);
+    if (pageNumberNum !== totalPages) {
+      setPages(pageNumberNum + 1);
+      //! one way of changing both page number and id number in url
+      router.push(`/serverSideCharacters/${Math.ceil((pageNumberNum + 1) / 20)}/${pageNumberNum + 1}`);
     }
   };
 
   const prev = () => {
-    setPages(pageNumber - 1);
-    //! Push the pageNumber into URL as parameter in every  prev;
-    router.push(`${pageNumber - 1}`);
+    setPages(pageNumberNum - 1);
+    //! one way of changing both page number and id number in url
+    router.push(`/serverSideCharacters/${Math.ceil((pageNumberNum - 1) / 20)}/${pageNumberNum - 1}`);
   };
-  //!
 
   useEffect(() => {
     FetchSingleData();
@@ -78,10 +76,10 @@ const SingleCharacter = ({ params: { id } }: SingleCharType) => {
       </div>
       <div className={styles.paging}>
         <div>
-          <button className={styles.paging_btn} onClick={prev} disabled={pageNumber === null || pageNumber === 1 ? true : false}>
+          <button className={styles.paging_btn} onClick={prev} disabled={pageNumberNum === null || pageNumberNum === 1 ? true : false}>
             Prev
           </button>
-          <button className={styles.paging_btn} onClick={next} disabled={pageNumber === totalPages ? true : false}>
+          <button className={styles.paging_btn} onClick={next} disabled={pageNumberNum === totalPages ? true : false}>
             Next
           </button>
         </div>
