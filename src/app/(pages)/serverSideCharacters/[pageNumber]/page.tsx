@@ -10,7 +10,6 @@ type paramsType = {
 };
 const Characters = async ({ params }: paramsType) => {
   const pageNumber = params.pageNumber ? parseInt(params.pageNumber) : 1;
-  console.log("pageNumber:::::::", pageNumber);
 
   //! To Get the Characters Data
   const getCharacters = async () => {

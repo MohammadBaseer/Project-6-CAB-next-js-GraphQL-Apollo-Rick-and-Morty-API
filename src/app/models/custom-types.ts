@@ -34,3 +34,15 @@ export type Location = {
   name: string;
   url: string;
 };
+
+export type EpisodesType = {
+  episodes: {
+    results: {
+      episode: string;
+      name: string;
+      characters: {
+        image: string;
+      }[];
+    }[];
+  };
+};
