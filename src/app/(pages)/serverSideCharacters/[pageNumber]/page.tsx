@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./Characters.module.scss";
 import { ApiResponse, Character, Info } from "@/app/models/custom-types";
-import Pagination from "@/Components/Pagination/page";
+import Pagination from "@/Components/Pagination/PagePagination/page";
 
 type paramsType = {
   params: {
