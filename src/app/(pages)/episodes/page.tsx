@@ -38,7 +38,7 @@ const Episodes = async ({ searchParams: { epi } }: searchParamsPropsType) => {
                     <td className={styles.td}>
                       {character.characters.map((img) => {
                         // return <Image src={img.image} width={40} height={40} alt={character.name} priority />;
-                        return <EpisodeImage image={img.image} charName={character.name} />;
+                        return <EpisodeImage image={img.image} charName={character.name} key={character.name} />;
                       })}
                     </td>
                   </tr>
