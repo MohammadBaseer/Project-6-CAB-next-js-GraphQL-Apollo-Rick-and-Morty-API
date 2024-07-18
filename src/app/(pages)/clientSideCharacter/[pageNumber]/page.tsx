@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./Characters.module.scss";
 import { ApiResponse, Character, Info } from "@/app/models/custom-types";
 import { MouseEvent, useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 type paramsType = {
   params: {
     pageNumber: string;
@@ -16,7 +16,6 @@ const Characters = ({ params }: paramsType) => {
   const [totalPages, setTotalPages] = useState<number>(1);
   const [pages, setPages] = useState<number>(1);
 
-  //! useRouter() used for URL Query Parameter (ex.. http://localhost:3000/clientSideCharacter/1)
   const router = useRouter();
 
   const getCharacters = async () => {
@@ -38,7 +37,6 @@ const Characters = ({ params }: paramsType) => {
     e.preventDefault();
     if (pages !== totalPages) {
       setPages(pages + 1);
-      //! Push the page into URL as parameter in every next
       router.push(`${pages + 1}`);
     }
   };
@@ -46,7 +44,6 @@ const Characters = ({ params }: paramsType) => {
   const prev = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setPages(CurrentPage - 1);
-    //! Push the page into URL as parameter in every prev
     router.push(`${CurrentPage - 1}`);
   };
 

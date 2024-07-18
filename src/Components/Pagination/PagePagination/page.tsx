@@ -1,5 +1,5 @@
 "use client";
-import { ApiResponse, Character } from "@/app/models/custom-types";
+import { ApiResponse } from "@/app/models/custom-types";
 import styles from "./Pagination.module.scss";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";

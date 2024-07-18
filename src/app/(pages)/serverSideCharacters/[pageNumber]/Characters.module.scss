@@ -51,7 +51,6 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
-  /* align-content: center; */
   justify-content: center;
 }
 
@@ -60,8 +59,6 @@
   height: 100%;
 }
 .more_btn {
-  /* margin: auto; */
-
   width: 60%;
   background-color: rgba(253, 253, 253, 0.87);
   margin: auto;
@@ -85,16 +82,3 @@
   padding: 10px;
   font-size: 2rem;
 }
-
-// .box_container {
-//   display: flex;
-//   align-items: center;
-//   flex-direction: column;
-//   .title {
-//     padding: 20px;
-//   }
-//   .image {
-//     border-radius: 20px;
-//     margin-top: 20px;
-//   }
-// }

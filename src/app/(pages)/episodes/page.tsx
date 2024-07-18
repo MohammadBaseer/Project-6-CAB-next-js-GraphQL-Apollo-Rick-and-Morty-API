@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./Episodes.module.scss";
 import { getClient } from "@/lib/ApolloClient";
 import { GETCHARACTERSDATA } from "@/app/queries/characters";
