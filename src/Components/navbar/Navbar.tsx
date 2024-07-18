@@ -4,8 +4,8 @@ import styles from "./Navbar.module.scss";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
-  const path = usePathname();
-  console.log("Path::", path);
+  // const path = usePathname();
+  // console.log("Path::", path);
   return (
     <nav className={styles.container}>
       <ul className={styles.navbar}>

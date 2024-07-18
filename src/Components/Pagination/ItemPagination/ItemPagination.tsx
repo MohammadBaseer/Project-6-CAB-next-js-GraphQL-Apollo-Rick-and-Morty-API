@@ -2,6 +2,7 @@
 import { useState } from "react";
 import styles from "./ItemPagination.module.scss";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 type PageNumberPropsType = {
   currentPage: number;
@@ -29,6 +30,10 @@ const ItemPagination = ({ currentPage }: PageNumberPropsType) => {
   return (
     <div className={styles.paging}>
       <div>
+        <Link className={styles.paging_btn} href={`/clientSideCharacter/${Math.ceil(currentPage / 20)}`}>
+          {" "}
+          back
+        </Link>
         <button className={styles.paging_btn} onClick={prev} disabled={currentPage === null || currentPage === 1 ? true : false}>
           Prev
         </button>
