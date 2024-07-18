@@ -51,7 +51,8 @@ const SingleCharacter = ({ params: { id } }: SingleCharType) => {
     if (pageNumber !== totalPages) {
       setPages(pageNumber + 1);
       //! Push the ?page=* into URL as parameter in every next
-      router.push(`${pageNumber + 1}`);
+      // router.push(`${pageNumber + 1}`);
+      router.push(`/clientSideCharacter/${Math.ceil((pageNumber + 1) / 20)}/${pageNumber + 1}`);
     }
   };
 
@@ -59,7 +60,8 @@ const SingleCharacter = ({ params: { id } }: SingleCharType) => {
     e.preventDefault();
     setPages(pageNumber - 1);
     //! Push the ?page=* into URL as parameter in every prev
-    router.push(`${pageNumber - 1}`);
+    // router.push(`${pageNumber - 1}`);
+    router.push(`/clientSideCharacter/${Math.ceil((pageNumber - 1) / 20)}/${pageNumber - 1}`);
   };
 
   useEffect(() => {
@@ -89,10 +91,11 @@ const SingleCharacter = ({ params: { id } }: SingleCharType) => {
       </div>
       <div className={styles.paging}>
         <div>
-          <Link className={styles.paging_btn} href={"/characters"}>
+          <Link className={styles.paging_btn} href={`/clientSideCharacter/${Math.ceil(pageNumber / 20)}`}>
             {" "}
             back
           </Link>
+
           <button className={styles.paging_btn} onClick={prev} disabled={pageNumber === null || pageNumber === 1 ? true : false}>
             Prev
           </button>

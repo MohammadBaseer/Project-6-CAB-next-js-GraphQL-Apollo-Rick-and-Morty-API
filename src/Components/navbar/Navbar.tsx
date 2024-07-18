@@ -15,7 +15,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link className={styles.links} href="/clientSideCharacter?page=1">
+          <Link className={styles.links} href="/clientSideCharacter/1">
             Client Side Characters
           </Link>
         </li>
