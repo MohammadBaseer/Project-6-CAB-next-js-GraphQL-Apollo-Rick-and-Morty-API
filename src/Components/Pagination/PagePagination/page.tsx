@@ -1,7 +1,7 @@
 "use client";
 import { ApiResponse, Character } from "@/app/models/custom-types";
 import styles from "./Pagination.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 type pageNumberPropsType = {
@@ -29,21 +29,20 @@ const Pagination = ({ pageNumber }: pageNumberPropsType) => {
   };
 
   const next = () => {
-    // e.preventDefault();
-    //   if (pages !== totalPages) {
     setPages(pages + 1);
     //     //! Push the ?page=* into URL as parameter in every next
     router.push(`${pages + 1}`);
-    //   }
   };
+
   const prev = () => {
-    // e.preventDefault();
-    //   if (pages !== totalPages) {
     setPages(pages - 1);
     //     //! Push the ?page=* into URL as parameter in every next
     router.push(`${pages - 1}`);
-    //   }
   };
+
+  useEffect(() => {
+    TotalPages();
+  }, []);
 
   return (
     <div className={styles.paging}>
@@ -55,13 +54,6 @@ const Pagination = ({ pageNumber }: pageNumberPropsType) => {
         <button className={styles.paging_btn} onClick={next} disabled={pages === totalPages && totalPages ? true : false}>
           {">"}
         </button>
-
-        {/* <button className={styles.paging_btn} onClick={prev} disabled={queryPage === null || queryPage === "1" ? true : false}>
-          {"<"}
-        </button>
-        <button className={styles.paging_btn} onClick={next} disabled={pages === totalPages ? true : false}>
-          {">"}
-        </button> */}
       </div>
     </div>
   );

@@ -1,57 +1,28 @@
-"use client";
 import { Character } from "@/app/models/custom-types";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
 import styles from "./ServerSideSingleCharacters.module.scss";
 import Spinner from "@/Components/Spinner/Loading";
-import { useRouter } from "next/navigation";
+import ItemPagination from "@/Components/Pagination/ItemPagination/ItemPagination";
+
 type SingleCharType = {
   params: {
     id: string;
     pageNumber: string;
   };
 };
-const SingleCharacter = ({ params: { id, pageNumber } }: SingleCharType) => {
-  const [data, setData] = useState<Character | null>(null);
-  const [totalPages, setTotalPages] = useState<number | string>(826);
-
-  const [pages, setPages] = useState<number | string>(id);
-  const pageNumberNum = Number(pages);
-  //! useRouter() used for URL Query Parameter
-  const router = useRouter();
+const SingleCharacter = async ({ params: { id, pageNumber } }: SingleCharType) => {
+  const currentPage = Number(id);
 
   const FetchSingleData = async () => {
-    try {
-      const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
-      if (!response.ok) {
-        console.log("RESPONSE: failed");
-        return;
-      }
-      const data = (await response.json()) as Character;
-      setData(data);
-    } catch (error) {
-      console.log("Error:::", error);
+    const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+    if (!response.ok) {
+      console.log("RESPONSE: failed");
+      return;
     }
+    const data = (await response.json()) as Character;
+    return data;
   };
-
-  //!==============
-  const next = () => {
-    if (pageNumberNum !== totalPages) {
-      setPages(pageNumberNum + 1);
-      //! one way of changing both page number and id number in url
-      router.push(`/serverSideCharacters/${Math.ceil((pageNumberNum + 1) / 20)}/${pageNumberNum + 1}`);
-    }
-  };
-
-  const prev = () => {
-    setPages(pageNumberNum - 1);
-    //! one way of changing both page number and id number in url
-    router.push(`/serverSideCharacters/${Math.ceil((pageNumberNum - 1) / 20)}/${pageNumberNum - 1}`);
-  };
-
-  useEffect(() => {
-    FetchSingleData();
-  }, []);
+  const data = await FetchSingleData();
 
   return (
     <>
@@ -74,16 +45,7 @@ const SingleCharacter = ({ params: { id, pageNumber } }: SingleCharType) => {
           </div>
         )}
       </div>
-      <div className={styles.paging}>
-        <div>
-          <button className={styles.paging_btn} onClick={prev} disabled={pageNumberNum === null || pageNumberNum === 1 ? true : false}>
-            Prev
-          </button>
-          <button className={styles.paging_btn} onClick={next} disabled={pageNumberNum === totalPages ? true : false}>
-            Next
-          </button>
-        </div>
-      </div>
+      <ItemPagination currentPage={currentPage} />
     </>
   );
 };
