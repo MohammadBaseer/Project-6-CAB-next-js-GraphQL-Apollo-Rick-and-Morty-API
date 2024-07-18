@@ -16,12 +16,12 @@ const Navbar = () => {
         </li>
         <li>
           <Link className={styles.links} href="/clientSideCharacter/1">
-            Client Side Characters
+            CSR
           </Link>
         </li>
         <li>
           <Link className={styles.links} href="/serverSideCharacters/1">
-            Server Side Characters
+            SSR
           </Link>
         </li>
         <li>
